@@ -1,0 +1,80 @@
+
+
+<div class="row">
+
+	<div class="col-md-12">
+
+		<div class="form-horizontal well">
+
+						<fieldset>
+
+							<legend><h5 class="text-center"><b>系統參數設定</b></h5></legend>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label">Host Name</label>
+						        <div class="col-md-4">
+						          	<input [(ngModel)]="sysSetting.hostname" class="form-control" placeholder="Ex: 192.168.1.254" type="text">
+						        </div>
+						        <label class="col-md-2 control-label">PORT</label>
+						        <div class="col-md-4">
+						            <input [(ngModel)]="sysSetting.port" class="form-control" placeholder="Ex: 22" type="number" max="1000" min="1" step="1">
+						        </div>
+						        
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label">帳號</label>
+						        <div class="col-md-4">
+						            <input [(ngModel)]="sysSetting.loginName" class="form-control" placeholder="帳號" type="text">
+						        </div>
+						        <label class="col-md-2 control-label">密碼</label>
+						        <div class="col-md-4">
+						            <input [(ngModel)]="sysSetting.password" class="form-control" placeholder="密碼" type="password">
+						        </div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label">使用者Device上限</label>
+						        <div class="col-md-4">
+						            <input [(ngModel)]="sysSetting.deviceLimit" class="form-control" placeholder="Ex: 5" type="number" max="1000" min="1" step="1">
+						        </div>
+
+						        <label class="col-md-2 control-label">群組名稱</label>
+						        <div class="col-md-4">
+						            <input [(ngModel)]="sysSetting.deviceGroup" class="form-control" placeholder="群組名稱" type="text">
+						        </div>
+						        
+						        
+							</div>
+
+							<div class="form-group">
+						        <div class="col-md-offset-2 col-md-2">
+						            <button [disabled]="!sysSettingValid" (click)="getSystemStatus()" type="button" class="btn btn-success btn-block" disabled>
+									連線測試
+									</button>
+						        </div>
+
+						        <div class="col-md-4">
+						            <button [disabled]="!sysSettingValid" (click)="updateSysSetting()" type="button" class="btn btn-primary btn-block" disabled>
+									更新設定
+									</button>
+						        </div>
+
+						        <div *ngIf="!sysSettingValid" class="col-md-offset-2 col-md-2">
+						            <button [disabled]="sysSettingValid" (click)="onSubmitInitial()" type="button" class="btn btn-warning btn-block">
+									初始化設定
+									</button>
+						        </div>
+
+							</div>
+
+						</fieldset>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+		

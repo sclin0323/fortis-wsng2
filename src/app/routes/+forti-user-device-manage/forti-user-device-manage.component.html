@@ -1,0 +1,207 @@
+
+<div class="row">
+
+	<div class="col-md-12">
+
+				<ul id="crudtabs" class="nav nav-tabs">
+				  <li class="active"><a data-toggle="tab" href="#addtab">新  增</a></li>
+				  <li><a data-toggle="tab" href="#updatetab">修  改</a></li>
+				</ul>
+
+				<div class="tab-content well">
+				  <div id="addtab" class="tab-pane fade in active">
+				    <div class="form-horizontal">
+
+						<form (ngSubmit)="onSubmitCreate(createForm)" #createForm="ngForm">
+						<fieldset>
+
+							<legend><h5 class="text-center"><b>使用者設備網卡管理-新增</b></h5></legend>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label">設備名稱</label>
+						        <div class="col-md-4">
+						          	<input ngControl="deviceName" [(ngModel)]="addUserDevice.deviceName" class="form-control" placeholder="設備名稱" type="text" required>
+						        </div>
+						        
+						        <label class="col-md-2 control-label">網卡卡號</label>
+						        <div class="col-md-4">
+						            <input ngControl="macAddress" [(ngModel)]="addUserDevice.macAddress" 
+						            (ngModelChange)="setLowerCaseAddMacAddress($event)" class="form-control" placeholder="00:FF:95:9F:68:16" type="text" pattern="^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$" required>
+						        </div>
+						        
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label">申請者ID</label>
+						        <div class="col-md-4">
+						          	<input ngControl="applicantId" [(ngModel)]="addUserDevice.applicantId" class="form-control" placeholder="申請者ID" type="text" required>
+						        </div>
+
+						       
+
+						        <label class="col-md-2 control-label">申請者名稱</label>
+						        <div class="col-md-4">
+						          	<input ngControl="applicantName" [(ngModel)]="addUserDevice.applicantName" class="form-control" placeholder="申請者名稱" type="text" required>
+						        </div>
+						        
+							</div>
+
+							
+							<div class="form-group">
+
+						        <div class="col-md-offset-4 col-md-4">
+						            <button [disabled]="!createForm.form.valid" type="submit" class="btn btn-primary btn-block">
+									新增設備
+									</button>
+						        </div>
+
+							</div>
+
+
+
+						</fieldset>
+						</form>
+
+					</div>
+				  </div>
+				  <div id="updatetab" class="tab-pane fade">
+				    <div class="form-horizontal">
+						
+						<form (ngSubmit)="onSubmitUpdate(updateForm)" #updateForm="ngForm">
+						<fieldset>
+
+							<legend><h5 class="text-center"><b>使用者設備網卡管理-修改</b></h5></legend>
+
+							<div class="form-group">
+
+						        <label class="col-md-2 control-label">設備名稱</label>
+						        <div class="col-md-4">
+						          	<input ngControl="deviceName" [(ngModel)]="updateUserDevice.deviceName" class="form-control" placeholder="設備名稱" type="text" disabled required>
+						        </div>
+						        
+						        <label class="col-md-2 control-label">網卡卡號</label>
+						        <div class="col-md-4">
+						            <input ngControl="macAddress" [(ngModel)]="updateUserDevice.macAddress" 
+						             (ngModelChange)="setLowerCaseUpdateMacAddress($event)" class="form-control" placeholder="00:FF:95:9F:68:16" type="text" pattern="^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$" required>
+						        </div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label">申請者ID</label>
+						        <div class="col-md-4">
+						          	<input ngControl="applicantId" [(ngModel)]="updateUserDevice.applicantId" class="form-control" placeholder="申請者ID" type="text" required>
+						        </div>
+
+						       
+
+						        <label class="col-md-2 control-label">申請者名稱</label>
+						        <div class="col-md-4">
+						          	<input ngControl="applicantName" [(ngModel)]="updateUserDevice.applicantName" class="form-control" placeholder="申請者名稱" type="text" required>
+						        </div>
+						        
+							</div>					
+
+							<div class="form-group">
+
+						        <div class="col-md-offset-4 col-md-4">
+						            <button [disabled]="!updateForm.form.valid" type="submit" class="btn btn-primary btn-block">
+									確認修改
+									</button>
+						        </div>
+
+							</div>
+
+						</fieldset>
+						</form>
+
+					</div>
+				  </div>
+				</div>
+		
+		
+
+	</div>
+
+</div>
+
+<div class="row">
+
+	<div class="col-md-12">
+
+		<div class="form-horizontal">
+
+			<fieldset>
+
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="autocomplete">每頁筆數</label>
+							<div class="col-md-2">
+									<select id="limitSelect" [(ngModel)]="pageSize" class="form-control">
+								      <option value=30>30 筆</option>
+								      <option value=50>50 筆</option>
+								      <option value=100>100 筆</option>
+								      <option value=2000>2000 筆</option>
+								    </select>
+							</div>
+							<label class="col-md-2 control-label" for="autocomplete">關鍵字</label>
+							<div class="col-md-6">
+								<div class="input-group">
+									<input id="searchWord" [(ngModel)]="searchWord" type="search" placeholder="Device Name or 網卡卡號" class="form-control input-md"> <span class="input-group-btn">
+										<button (click)="onClickSearch(searchWord)" id="search_btn" class="btn btn-success" type="button" >資料查詢</button>
+									</span>
+
+
+
+								</div>
+								
+							</div>
+
+							
+
+						</div>
+		
+			</fieldset>
+
+		</div>
+
+	</div>
+	
+	<div class="col-md-12">
+			<table class="table table-bordered">
+			    <thead>
+			      <tr>
+			      	<th>編號</th>
+			      	<th>設備名稱</th>
+					<th>卡號</th>
+			        <th>申請者ID</th>
+			        <th>申請者名稱</th>
+			        <th>申請日期</th>
+			        <th>申請時間</th>
+			        <th>修改</th>
+			        <th>刪除</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr *ngFor="let userDevice of userDevices; let i = index">
+			      	<th>{{i+1}}</th>
+			        <td>{{userDevice.deviceName}}</td>
+			        <td>{{userDevice.macAddress}}</td>
+			        <td>{{userDevice.applicantId}}</td>
+			        <td>{{userDevice.applicantName}}</td>
+			        <td>{{userDevice.applicantDate}}</td>
+			        <td>{{userDevice.applicantTime}}</td>
+			        <td>
+						<button (click)="onClickPreUpdate(userDevice, i)" type="button" class="btn btn-warning">修改</button>
+					</td>
+					<td>
+						<button (click)="onSubmitDelete(userDevice, i)" type="button" class="btn btn-danger">刪除</button>
+					</td>
+			      </tr>
+			    </tbody>
+			  	</table>
+
+			  	<div class="col-md-12 text-center">
+			      <div id="page-selection"></div>
+			    </div>
+	</div>
+
+</div>

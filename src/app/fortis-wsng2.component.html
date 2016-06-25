@@ -1,0 +1,63 @@
+
+<div class="container-fluid">
+    <div class="row">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-toggle">
+            <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">{{title}}</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="nav-toggle">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html">首頁</a></li>
+            <!--
+            <li><a href="#">關於</a></li>
+            <li><a href="#" >聯絡人</a></li>
+            -->
+
+
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <!--
+            <li><a href="http://expo.getbootstrap.com"
+              onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">使用者: {{userName}}</a></li>
+            <li><a href="j_spring_security_logout"
+              onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">登出</a></li>
+              -->
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-3">
+
+        <div class="list-group">
+          
+          
+          <a href="#" class="list-group-item disabled"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>系統管理</a> 
+          <a [routerLink]="['/forti-user-device-manage']" class="list-group-item">使用者設備網卡管理</a> 
+          <a [routerLink]="['/forti-manage']" class="list-group-item">系統參數設定</a> 
+          
+        </div>
+
+      </div>
+
+      <div class="col-md-9">
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>
+
+</div>
+
+<!-- Ajax Waiting Modal-->
+<app-ajax-waiting>Load AjaxWaiting...</app-ajax-waiting>
+
+
+
+
