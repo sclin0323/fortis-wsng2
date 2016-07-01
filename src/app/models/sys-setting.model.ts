@@ -6,6 +6,5 @@ export class SysSettingModel {
 	public loginName:string;
 	public password: string;
 	public deviceLimit: number;
-	public deviceGroup:string;
 
 }

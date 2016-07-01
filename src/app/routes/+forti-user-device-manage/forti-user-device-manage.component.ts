@@ -40,8 +40,6 @@ export class FortiUserDeviceManageComponent implements OnInit {
 	constructor(http: Http) { 
 		this._http = http;
 
-		// test
-		this.addUserDevice.macAddress = "00:0a:95:9d:68:16";
 	}
 
   public ngOnInit(): void {
@@ -158,11 +156,17 @@ export class FortiUserDeviceManageComponent implements OnInit {
 	  jQuery('#ajaxWaitingModal').modal("show");
 	  let params: URLSearchParams = new URLSearchParams();
 	  params.set('deviceName', record.deviceName);
+
+	  console.info(record.deviceGroup);
+	  params.set('deviceGroup', record.deviceGroup);
+
+	  
 	  this._http.delete(environment['urlPrefix']+"userDevice/delete", { search: params })
 		.map(res => res.json())
 	  	.subscribe((res: Object) =>
 			  this.deleteSuccess(res), this.logError
 		  );
+		  
   }
 
   public deleteSuccess(response) {

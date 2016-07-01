@@ -32,6 +32,26 @@
 							</div>
 
 							<div class="form-group">
+								<label class="col-md-2 control-label">設備群組</label>
+						        <div class="col-md-4">
+						        	<select [(ngModel)]="addUserDevice.deviceGroup" class="form-control">
+				                        <option value="none-auth-group-0">none-auth-group-0</option>
+				                        <option value="none-auth-group-1">none-auth-group-1</option>
+				                        <option value="none-auth-group-2">none-auth-group-2</option>
+				                        <option value="none-auth-group-3">none-auth-group-3</option>
+				                        <option value="none-auth-group-4">none-auth-group-4</option>
+				                        <option value="none-auth-group-5">none-auth-group-5</option>
+				                        <option value="none-auth-group-6">none-auth-group-6</option>
+				                        <option value="none-auth-group-7">none-auth-group-7</option>
+				                        <option value="none-auth-group-8">none-auth-group-8</option>
+				                        <option value="none-auth-group-9">none-auth-group-9</option>    
+				                     </select>
+						        </div>
+
+
+							</div>
+
+							<div class="form-group">
 								<label class="col-md-2 control-label">申請者ID</label>
 						        <div class="col-md-4">
 						          	<input ngControl="applicantId" [(ngModel)]="addUserDevice.applicantId" class="form-control" placeholder="申請者ID" type="text" required>
@@ -85,6 +105,13 @@
 						             (ngModelChange)="setLowerCaseUpdateMacAddress($event)" class="form-control" placeholder="00:FF:95:9F:68:16" type="text" pattern="^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$" required>
 						        </div>
 							</div>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label">設備群組</label>
+						        <div class="col-md-4">
+									<input ngControl="deviceGroup" [(ngModel)]="updateUserDevice.deviceGroup" class="form-control" placeholder="設備群組" type="text" disabled required>
+						        </div>
+						    </div>
 
 							<div class="form-group">
 								<label class="col-md-2 control-label">申請者ID</label>
@@ -172,6 +199,7 @@
 			      	<th>編號</th>
 			      	<th>設備名稱</th>
 					<th>卡號</th>
+					<th>設備群組</th>
 			        <th>申請者ID</th>
 			        <th>申請者名稱</th>
 			        <th>申請日期</th>
@@ -185,6 +213,7 @@
 			      	<th>{{i+1}}</th>
 			        <td>{{userDevice.deviceName}}</td>
 			        <td>{{userDevice.macAddress}}</td>
+			        <td>{{userDevice.deviceGroup}}</td>
 			        <td>{{userDevice.applicantId}}</td>
 			        <td>{{userDevice.applicantName}}</td>
 			        <td>{{userDevice.applicantDate}}</td>
