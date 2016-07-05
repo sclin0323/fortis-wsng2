@@ -1,11 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
 
 import { FortiManageComponent } from './routes/+forti-manage';
 import { FortiUserDeviceManageComponent } from './routes/+forti-user-device-manage';
+import { SysUserComponent } from './routes/+sys-user';
 
 import { AjaxWaitingComponent } from './ajax-waiting/ajax-waiting.component';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgForm, NgClass, NgIf} from '@angular/common';
+import {Http, Response, Headers, URLSearchParams} from '@angular/http';
+import { Observable }       from 'rxjs/Observable';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+import { environment } from './environment';
 
+declare var jQuery: any;
 @Component({
   moduleId: module.id,
   selector: 'fortis-wsng2-app',
@@ -17,9 +25,69 @@ import { AjaxWaitingComponent } from './ajax-waiting/ajax-waiting.component';
 
 @Routes([
 		{ path: '/forti-manage', component: FortiManageComponent },
-		{ path: '/forti-user-device-manage', component: FortiUserDeviceManageComponent }
+		{ path: '/forti-user-device-manage', component: FortiUserDeviceManageComponent },
+		{ path: '/sys-user', component: SysUserComponent }
 ])
 
-export class FortisWsng2AppComponent {
-	title = 'Fortis 管理系統';
+export class FortisWsng2AppComponent implements OnInit{
+	public title = 'Fortis 管理系統';
+	public version:string;
+	public sysUserId: string;
+	public sysUserName: string;
+
+	// Http
+	public _http: Http;
+
+	constructor(http: Http) { 
+		this._http = http;
+		this.version = environment['version'];
+
+	}
+
+	ngOnInit() {
+  		// 取得 USER 資訊
+		  let params: URLSearchParams = new URLSearchParams();
+
+		  this._http.get(environment['urlPrefix']+'sysUser/getUserInfo', { search: params })
+			  .map((res: Response) => res.json())
+			  .subscribe((res: Object) =>
+				  this.readSuccess(res), this.logError
+			  );
+
+  	}
+
+  	readSuccess(response) {
+	  console.info(response.data);
+	  this.sysUserId = response.data.sysUserId;
+	  this.sysUserName = response.data.sysUserName;
+  }
+
+  	logout(){
+  		console.info(environment['urlPrefix']+'j_spring_security_logout');
+	    //window.location.replace('/logout');
+	    // 取得 USER 資訊
+		  let params: URLSearchParams = new URLSearchParams();
+
+
+
+		  this._http.get('http://localhost:8080/j_spring_security_logout', { search: params })
+			  .map((res: Response) => res.json())
+			  .subscribe((res: Object) =>
+				  this.logoutSuccess(res), this.logError
+			  );
+	  }
+
+	  logoutSuccess(response) {
+	  	console.info("logoutSuccess");
+	  }
+
+  	
+
+  logError(error) {
+	  console.info("logError");
+	  alert("執行發生錯誤!!");
+	  var myWindow = window.open("", "", "width=600,height=300", false);
+	  myWindow.document.write(JSON.stringify(error._body));
+  }
+
 }

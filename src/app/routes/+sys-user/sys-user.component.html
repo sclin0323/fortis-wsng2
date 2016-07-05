@@ -1,0 +1,231 @@
+<div class="row">
+
+	<div class="col-md-12">
+
+				<ul id="crudtabs" class="nav nav-tabs">
+				  <li class="active"><a data-toggle="tab" href="#addtab">新  增</a></li>
+				  <li><a data-toggle="tab" href="#updatetab">修  改</a></li>
+				</ul>
+
+				<div class="tab-content well">
+				  <div id="addtab" class="tab-pane fade in active">
+				    <div class="form-horizontal">
+
+						<form (ngSubmit)="onSubmitCreate(createForm)" #createForm="ngForm">
+						<fieldset>
+
+							<legend><h5 class="text-center"><b>系統使用者管理-新增</b></h5></legend>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label">使用者 ID</label>
+						        <div class="col-md-4">
+						          	<input ngControl="sysUserId" [(ngModel)]="addSysUser.sysUserId" class="form-control" placeholder="使用者 ID" type="text" required>
+						        </div>
+						        
+						        <label class="col-md-2 control-label">名稱</label>
+						        <div class="col-md-4">
+						          	<input ngControl="name" [(ngModel)]="addSysUser.name" class="form-control" placeholder="名稱" type="text" required>
+						        </div>
+						        
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label">角色</label>
+						        <div class="col-md-4">
+
+						          	<select [(ngModel)]="addSysUser.role" class="form-control">
+				                        <option value="ROLE_ADMIN">ROLE_ADMIN 管理員</option>  
+				                     </select>
+						        </div>
+						        
+						        <label class="col-md-2 control-label">密碼</label>
+						        <div class="col-md-4">
+						          	<input ngControl="password" [(ngModel)]="addSysUser.password" class="form-control" placeholder="密碼" type="password" required>
+						        </div>
+
+
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label">再次密碼</label>
+						        <div class="col-md-4">
+						          	<input ngControl="repassword" [(ngModel)]="addSysUser.repassword" class="form-control" placeholder="密碼" type="password" required>
+						        </div>
+							</div>
+
+							
+							<div class="form-group">
+
+						        <div class="col-md-offset-4 col-md-4">
+						            <button [disabled]="!createForm.form.valid" type="submit" class="btn btn-primary btn-block">
+									新增使用者
+									</button>
+						        </div>
+
+							</div>
+
+
+
+						</fieldset>
+						</form>
+
+					</div>
+				  </div>
+				  <div id="updatetab" class="tab-pane fade">
+				    <div class="form-horizontal">
+						
+						<form (ngSubmit)="onSubmitUpdate(updateForm)" #updateForm="ngForm">
+						<fieldset>
+
+							<legend><h5 class="text-center"><b>系統使用者管理-修改</b></h5></legend>
+
+							<div class="form-group">
+									<label class="col-md-2 control-label">使用者 ID</label>
+							        <div class="col-md-4">
+							          	<input ngControl="sysUserId" [(ngModel)]="updateSysUser.sysUserId" class="form-control" placeholder="使用者 ID" type="text" disabled required>
+							        </div>
+							        
+							        <label class="col-md-2 control-label">名稱</label>
+							        <div class="col-md-4">
+							          	<input ngControl="name" [(ngModel)]="updateSysUser.name" class="form-control" placeholder="名稱" type="text" required>
+							        </div>
+							        
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label">角色</label>
+						        <div class="col-md-4">
+						          	<input ngControl="role" [(ngModel)]="updateSysUser.role" class="form-control" placeholder="角色" type="text" disabled required>
+						        </div>
+						        
+						        <label class="col-md-2 control-label">變更密碼</label>
+						        <div class="col-md-4">
+						        	<div class="input-group">
+						        	<span class="input-group-addon">
+								        <input [(ngModel)]="updateSysUser.changePassword"  type="checkbox" aria-label="變更密碼">
+								    </span>
+						          	<input ngControl="password" [(ngModel)]="updateSysUser.password" class="form-control" placeholder="輸入原密碼" type="password" [disabled]="!updateSysUser.changePassword" >
+						          	</div>
+						        </div>
+
+						    </div>	
+
+						    <div class="form-group" *ngIf="updateSysUser.changePassword == true" >
+								<label class="col-md-2 control-label">新密碼</label>
+						        <div class="col-md-4">
+						          	<input ngControl="password" [(ngModel)]="updateSysUser.newPassword" class="form-control" placeholder="新密碼" type="password" >
+						        </div>
+
+						        <label class="col-md-2 control-label">再次新密碼</label>
+						        <div class="col-md-4">
+						          	<input ngControl="password" [(ngModel)]="updateSysUser.renewPassword" class="form-control" placeholder="再次新密碼" type="password" >
+						        </div>
+						    </div>	
+
+							<div class="form-group">
+
+						        <div class="col-md-offset-4 col-md-4">
+						            <button [disabled]="!updateForm.form.valid" type="submit" class="btn btn-primary btn-block">
+									確認修改
+									</button>
+						        </div>
+
+							</div>
+
+						</fieldset>
+						</form>
+
+					</div>
+				  </div>
+				</div>
+		
+		
+
+	</div>
+
+</div>
+
+
+<div class="row">
+
+	<div class="col-md-12">
+
+		<div class="form-horizontal">
+
+			<fieldset>
+
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="autocomplete">每頁筆數</label>
+							<div class="col-md-2">
+									<select id="limitSelect" [(ngModel)]="pageSize" class="form-control">
+								      <option value=30>30 筆</option>
+								      <option value=50>50 筆</option>
+								      <option value=100>100 筆</option>
+								      <option value=2000>2000 筆</option>
+								    </select>
+							</div>
+							<label class="col-md-2 control-label" for="autocomplete">關鍵字</label>
+							<div class="col-md-6">
+								<div class="input-group">
+									<input id="searchWord" [(ngModel)]="searchWord" type="search" placeholder="Device Name or 網卡卡號" class="form-control input-md"> <span class="input-group-btn">
+										<button (click)="onClickSearch(searchWord)" id="search_btn" class="btn btn-success" type="button" >資料查詢</button>
+									</span>
+
+
+
+								</div>
+								
+							</div>
+
+							
+
+						</div>
+		
+			</fieldset>
+
+		</div>
+
+	</div>
+	
+	<div class="col-md-12">
+			<table class="table table-bordered">
+			    <thead>
+			      <tr>
+			      	<th>編號</th>
+			      	<th>使用者ID</th>
+					<th>名稱</th>
+					<th>角色</th>
+			        <th>建立人員ID</th>
+			        <th>建立人員</th>
+			        <th>建立日期</th>
+			        <th>建立時間</th>
+			        <th>修改</th>
+			        <th>刪除</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr *ngFor="let sysUser of sysUsers; let i = index">
+			      	<th>{{i+1}}</th>
+			        <td>{{sysUser.sysUserId}}</td>
+			        <td>{{sysUser.name}}</td>
+			        <td>{{sysUser.role}}</td>
+			        <td>{{sysUser.crtUid}}</td>
+			        <td>{{sysUser.crtName}}</td>
+			        <td>{{sysUser.crtDate}}</td>
+			        <td>{{sysUser.crtTime}}</td>
+			        <td>
+						<button (click)="onClickPreUpdate(sysUser, i)" type="button" class="btn btn-warning">修改</button>
+					</td>
+					<td>
+						<button (click)="onSubmitDelete(sysUser, i)" type="button" class="btn btn-danger" [disabled]="sysUser.sysUserId == 'sysadmin123'">刪除</button>
+					</td>
+			      </tr>
+			    </tbody>
+			  	</table>
+
+			  	<div class="col-md-12 text-center">
+			      <div id="page-selection"></div>
+			    </div>
+	</div>
+
+</div>

@@ -34,6 +34,7 @@ const barrels: string[] = [
   'app/routes/+forti-manage',
   'app/routes/+forti-user-device-manage',
   'app/ajax-waiting',
+  'app/routes/+sys-user',
   /** @cli-barrel */
 ];
 

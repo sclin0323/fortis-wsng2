@@ -6,7 +6,8 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-toggle">
             <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">{{title}}</a>
+
+          <a class="navbar-brand" href="/">{{title}}<span class="text-muted"><h6>{{version}}</h6></span></a>
         </div>
 
         <div class="collapse navbar-collapse" id="nav-toggle">
@@ -15,18 +16,15 @@
             
             <li class="visible-xs-block visible-sm-block"><a [routerLink]="['/forti-user-device-manage']" >使用者設備網卡管理</a></li>
             <li class="visible-xs-block visible-sm-block"><a [routerLink]="['/forti-manage']" >系統參數設定</a></li>
-            
+            <li class="visible-xs-block visible-sm-block"><a [routerLink]="['/sys-user']" >系統使用者管理</a></li>
 
 
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <!--
-            <li><a href="http://expo.getbootstrap.com"
-              onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">使用者: {{userName}}</a></li>
-            <li><a href="j_spring_security_logout"
-              onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">登出</a></li>
-              -->
+            
+            <li><a><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 使用者: {{sysUserName}}</a></li>
+            <!-- <li><a href="javascript:void(0)" (click)="logout()">登出</a></li> -->
           </ul>
         </div>
       </nav>
@@ -39,9 +37,10 @@
         <div class="list-group visible-md-block visible-lg-block">
           
           
-          <a href="#" class="list-group-item disabled"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>系統管理</a> 
+          <a href="#" class="list-group-item disabled"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 系統管理</a> 
           <a [routerLink]="['/forti-user-device-manage']" class="list-group-item">使用者設備網卡管理</a> 
           <a [routerLink]="['/forti-manage']" class="list-group-item">系統參數設定</a> 
+           <a [routerLink]="['/sys-user']" class="list-group-item">系統使用者管理</a> 
           
         </div>
 
