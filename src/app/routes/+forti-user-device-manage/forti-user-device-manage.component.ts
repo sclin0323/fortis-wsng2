@@ -98,6 +98,9 @@ export class FortiUserDeviceManageComponent implements OnInit {
 		  var newRecord = new UserDeviceModel();
 		  newRecord = response.data;
 		  this.userDevices.push(newRecord);
+
+		  // 清除 Form
+		  this.addUserDevice = new UserDeviceModel();
 		} else if (response.status === -1) {
 			alert(response.message);
 		} else {
@@ -140,6 +143,9 @@ export class FortiUserDeviceManageComponent implements OnInit {
 		if (response.status === 0) {
 			// 更新資料
 			this.userDevices[this.updateIndex] = response.data;
+
+			// 清除 Form
+		  	this.updateUserDevice = new UserDeviceModel();
 		} else if (response.status === -1) {
 			alert(response.message);
 		} else {

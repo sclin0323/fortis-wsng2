@@ -102,6 +102,9 @@ export class SysUserComponent implements OnInit {
 		  var newRecord = new SysUserModel();
 		  newRecord = response.data;
 		  this.sysUsers.push(newRecord);
+
+		  // 清除 Form
+		  this.addSysUser = new SysUserModel();
 		} else if (response.status === -1) {
 			alert(response.message);
 		} else {
@@ -128,9 +131,9 @@ export class SysUserComponent implements OnInit {
 
   public onSubmitUpdate() {
 
-  	console.info(this.updateSysUser.newPassword);
-  	console.info(this.updateSysUser.renewPassword);
-  	console.info(this.updateSysUser.password);
+  	//console.info(this.updateSysUser.newPassword);
+  	//console.info(this.updateSysUser.renewPassword);
+  	//console.info(this.updateSysUser.password);
 
   	if(this.updateSysUser.changePassword == true) {
   		if(this.updateSysUser.newPassword == null ||  this.updateSysUser.renewPassword == null || this.updateSysUser.password == null) {
@@ -164,6 +167,9 @@ export class SysUserComponent implements OnInit {
 		if (response.status === 0) {
 			// 更新資料
 			this.sysUsers[this.updateIndex] = response.data;
+
+			// 清除 Form
+		  	this.updateSysUser = new SysUserModel();
 		} else if (response.status === -1) {
 			alert(response.message);
 		} else {
