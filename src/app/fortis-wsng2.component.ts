@@ -30,7 +30,7 @@ declare var jQuery: any;
 ])
 
 export class FortisWsng2AppComponent implements OnInit{
-	public title = 'Fortis 管理系統';
+	public title = '校園無線網路後台管理系統';
 	public version:string;
 	public sysUserId: string;
 	public sysUserName: string;
@@ -60,7 +60,7 @@ export class FortisWsng2AppComponent implements OnInit{
 	  console.info(response.data);
 	  this.sysUserId = response.data.sysUserId;
 	  this.sysUserName = response.data.sysUserName;
-  }
+  	}
 
   	logout(){
   		console.info(environment['urlPrefix']+'j_spring_security_logout');
@@ -83,11 +83,11 @@ export class FortisWsng2AppComponent implements OnInit{
 
   	
 
-  logError(error) {
-	  console.info("logError");
-	  alert("執行發生錯誤!!");
-	  var myWindow = window.open("", "", "width=600,height=300", false);
-	  myWindow.document.write(JSON.stringify(error._body));
-  }
+	  logError(error) {
+		  console.info("logError");
+		  alert("執行發生錯誤!!");
+		  var myWindow = window.open("", "", "width=600,height=300", false);
+		  myWindow.document.write(JSON.stringify(error._body));
+	  }
 
 }

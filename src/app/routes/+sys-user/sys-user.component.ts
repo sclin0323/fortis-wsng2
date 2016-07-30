@@ -43,6 +43,8 @@ export class SysUserComponent implements OnInit {
 
 
   ngOnInit() {
+  	// 啟用設定 ToolTip
+
 
   	// 初始化 Table Paging
 	  var _this = this;
@@ -73,6 +75,15 @@ export class SysUserComponent implements OnInit {
 
 	  });
   }
+
+  ngAfterViewInit() {
+		
+		jQuery('body').tooltip({
+			selector: '[data-toggle="tooltip"]'
+			//trigger: 'focus'
+		});
+		
+    }
 
     // 新增 SysUser 
   public onSubmitCreate(form: any) {
