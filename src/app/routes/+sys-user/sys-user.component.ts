@@ -45,7 +45,6 @@ export class SysUserComponent implements OnInit {
   ngOnInit() {
   	// 啟用設定 ToolTip
 
-
   	// 初始化 Table Paging
 	  var _this = this;
 	  var _urlPrefix = environment['urlPrefix']
@@ -74,6 +73,9 @@ export class SysUserComponent implements OnInit {
 		  
 
 	  });
+
+	  // 手動執行查詢 Load 預設資料
+	  this.onClickSearch('');
   }
 
   ngAfterViewInit() {
@@ -239,11 +241,11 @@ export class SysUserComponent implements OnInit {
 	  this._http.get(environment['urlPrefix']+'sysUser/read', { search: params })
 		  .map((res: Response) => res.json())
 		  .subscribe((res: Object) =>
-			  this.readSuccess(res), this.logError
+			  this.readRes(res), this.logError
 		  );
   }
 
-   readSuccess(response) {
+   readRes(response) {
 	  this.sysUsers = response.data;
 
 	  // 計算頁數

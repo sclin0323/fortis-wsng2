@@ -104,8 +104,23 @@ export class FortiManageComponent implements OnInit {
 
 	public checkSuccess(response) {
 
+		// 處理錯誤回應
+		if(response.status == -1) {
+			alert(response.message);
+			jQuery('#ajaxWaitingModal').modal("hide");
+			return;
+		}
+
+		var prettifyMsg;
+		for (var item of response.data.data) {
+			console.info(item);
+		    prettifyMsg += item;
+		}
+
+		var str = prettifyMsg.replace(new RegExp('\r?\n','g'),'<br/>');
+
 		var myWindow = window.open("", "", "width=600,height=300", false);
-		myWindow.document.write(JSON.stringify(response));
+		myWindow.document.write(JSON.stringify(str));
 		jQuery('#ajaxWaitingModal').modal("hide");
 	}
 

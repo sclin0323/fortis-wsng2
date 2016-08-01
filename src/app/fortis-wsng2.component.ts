@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
+import { Router, Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
 
 import { FortiManageComponent } from './routes/+forti-manage';
 import { FortiUserDeviceManageComponent } from './routes/+forti-user-device-manage';
@@ -38,7 +38,7 @@ export class FortisWsng2AppComponent implements OnInit{
 	// Http
 	public _http: Http;
 
-	constructor(http: Http) { 
+	constructor(http: Http, private router: Router) { 
 		this._http = http;
 		this.version = environment['version'];
 
@@ -51,35 +51,23 @@ export class FortisWsng2AppComponent implements OnInit{
 		  this._http.get(environment['urlPrefix']+'sysUser/getUserInfo', { search: params })
 			  .map((res: Response) => res.json())
 			  .subscribe((res: Object) =>
-				  this.readSuccess(res), this.logError
+				  this.getUserInfoRes(res), this.logError
 			  );
+
+		// 預設 Router
+		this.router.navigate(['/forti-user-device-manage']);
 
   	}
 
-  	readSuccess(response) {
+  	getUserInfoRes(response) {
 	  console.info(response.data);
 	  this.sysUserId = response.data.sysUserId;
 	  this.sysUserName = response.data.sysUserName;
   	}
 
   	logout(){
-  		console.info(environment['urlPrefix']+'j_spring_security_logout');
-	    //window.location.replace('/logout');
-	    // 取得 USER 資訊
-		  let params: URLSearchParams = new URLSearchParams();
-
-
-
-		  this._http.get('http://localhost:8080/j_spring_security_logout', { search: params })
-			  .map((res: Response) => res.json())
-			  .subscribe((res: Object) =>
-				  this.logoutSuccess(res), this.logError
-			  );
-	  }
-
-	  logoutSuccess(response) {
-	  	console.info("logoutSuccess");
-	  }
+  		jQuery(location).attr('href', 'logout.html');
+	}
 
   	
 

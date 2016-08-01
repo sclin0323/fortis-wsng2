@@ -31,7 +31,7 @@
           <ul class="nav navbar-nav navbar-right">
             
             <li><a><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 使用者: {{sysUserName}}</a></li>
-            <!-- <li><a href="javascript:void(0)" (click)="logout()">登出</a></li> -->
+            <li><a href="javascript:void(0)" (click)="logout()">登出</a></li>
           </ul>
         </div>
       </nav>
@@ -47,7 +47,7 @@
           <a href="#" class="list-group-item disabled"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 系統管理</a> 
           <a [routerLink]="['/forti-user-device-manage']" class="list-group-item">使用者設備網卡管理</a> 
           <a [routerLink]="['/forti-manage']" class="list-group-item">系統參數設定</a> 
-           <a [routerLink]="['/sys-user']" class="list-group-item">系統使用者管理</a> 
+          <a [routerLink]="['/sys-user']" class="list-group-item">系統使用者管理</a> 
           
         </div>
 

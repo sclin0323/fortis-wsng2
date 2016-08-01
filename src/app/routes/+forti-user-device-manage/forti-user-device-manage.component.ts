@@ -70,9 +70,10 @@ export class FortiUserDeviceManageComponent implements OnInit {
 				  _this.userDevices = response.data;
 			  }
 		  });
-		  
-
 	  });
+
+	  // 手動執行查詢 Load 預設資料
+	  this.onClickSearch('');
   }
 
   // 新增 User Devices
@@ -208,8 +209,18 @@ export class FortiUserDeviceManageComponent implements OnInit {
 	  this._http.get(environment['urlPrefix']+'userDevice/read', { search: params })
 		  .map((res: Response) => res.json())
 		  .subscribe((res: Object) =>
-			  this.readSuccess(res), this.logError
+			  this.readRes(res), this.logError
 		  );
+  }
+
+  readRes(response) {
+	  this.userDevices = response.data;
+
+	  // 計算頁數
+	  this.totalPages = Math.ceil(response.total / this.pageSize);
+
+	  jQuery('#page-selection').bootpag({ page: 1, total: this.totalPages, maxVisible: 10 });
+	  jQuery('#ajaxWaitingModal').modal("hide");
   }
 
 
@@ -222,15 +233,7 @@ export class FortiUserDeviceManageComponent implements OnInit {
 	  jQuery('#ajaxWaitingModal').modal("hide");
   }
 
-  readSuccess(response) {
-	  this.userDevices = response.data;
-
-	  // 計算頁數
-	  this.totalPages = Math.ceil(response.total / this.pageSize);
-
-	  jQuery('#page-selection').bootpag({ page: 1, total: this.totalPages, maxVisible: 10 });
-	  jQuery('#ajaxWaitingModal').modal("hide");
-  }
+  
 
   // 新增 - 轉換網卡 to LowerCase
   setLowerCaseAddMacAddress(event) {
