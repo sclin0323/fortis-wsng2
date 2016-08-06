@@ -4,6 +4,7 @@ import { Router, Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/rou
 import { FortiManageComponent } from './routes/+forti-manage';
 import { FortiUserDeviceManageComponent } from './routes/+forti-user-device-manage';
 import { SysUserComponent } from './routes/+sys-user';
+import { UserDeviceLogComponent } from './routes/+user-device-log';
 
 import { AjaxWaitingComponent } from './ajax-waiting/ajax-waiting.component';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgForm, NgClass, NgIf} from '@angular/common';
@@ -26,7 +27,8 @@ declare var jQuery: any;
 @Routes([
 		{ path: '/forti-manage', component: FortiManageComponent },
 		{ path: '/forti-user-device-manage', component: FortiUserDeviceManageComponent },
-		{ path: '/sys-user', component: SysUserComponent }
+		{ path: '/sys-user', component: SysUserComponent },
+		{ path: '/user-device-log', component: UserDeviceLogComponent }
 ])
 
 export class FortisWsng2AppComponent implements OnInit{
@@ -43,6 +45,24 @@ export class FortisWsng2AppComponent implements OnInit{
 		this.version = environment['version'];
 
 	}
+
+	ngAfterViewInit() {
+	  	// 控制頁面 GO TOP
+	  	jQuery('#gotop').click(function (e) {
+			e.preventDefault();
+			jQuery('html, body').animate({
+				scrollTop: 0
+			}, 500);
+		});
+		jQuery(window).scroll(function () {
+			
+			if (jQuery(this).scrollTop() > 160) {
+				jQuery('#gotop').stop().fadeIn('fast');
+			} else {
+				jQuery('#gotop').stop().fadeOut('fast');
+			}
+		});
+	  }
 
 	ngOnInit() {
   		// 取得 USER 資訊
@@ -77,5 +97,7 @@ export class FortisWsng2AppComponent implements OnInit{
 		  var myWindow = window.open("", "", "width=600,height=300", false);
 		  myWindow.document.write(JSON.stringify(error._body));
 	  }
+
+
 
 }

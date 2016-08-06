@@ -35,12 +35,12 @@
 
 							<div class="form-group">
 								<label class="col-md-2 control-label">設備名稱</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						          	<input ngControl="deviceName" [(ngModel)]="addUserDevice.deviceName" class="form-control" placeholder="設備名稱" type="text" required>
 						        </div>
 						        
 						        <label class="col-md-2 control-label">網卡卡號</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						            <input ngControl="macAddress" [(ngModel)]="addUserDevice.macAddress" 
 						            (ngModelChange)="setLowerCaseAddMacAddress($event)" class="form-control" placeholder="00:FF:95:9F:68:16" type="text" pattern="^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$" required>
 						        </div>
@@ -49,7 +49,7 @@
 
 							<div class="form-group">
 								<label class="col-md-2 control-label">設備群組</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						        	<select [(ngModel)]="addUserDevice.deviceGroup" class="form-control">
 				                        <option value="none-auth-group-0">none-auth-group-0</option>
 				                        <option value="none-auth-group-1">none-auth-group-1</option>
@@ -69,14 +69,14 @@
 
 							<div class="form-group">
 								<label class="col-md-2 control-label">申請者ID</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						          	<input ngControl="applicantId" [(ngModel)]="addUserDevice.applicantId" class="form-control" placeholder="申請者ID" type="text" required>
 						        </div>
 
 						       
 
 						        <label class="col-md-2 control-label">申請者名稱</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						          	<input ngControl="applicantName" [(ngModel)]="addUserDevice.applicantName" class="form-control" placeholder="申請者名稱" type="text" required>
 						        </div>
 						        
@@ -85,7 +85,7 @@
 							
 							<div class="form-group">
 
-						        <div class="col-md-offset-4 col-md-4">
+						        <div class="col-md-offset-4 col-md-3">
 						            <button [disabled]="!createForm.form.valid" type="submit" class="btn btn-primary btn-block">
 										<span class="glyphicon glyphicon-plus" aria-hidden="true">新增設備</span>
 									</button>
@@ -109,12 +109,12 @@
 							<div class="form-group">
 
 						        <label class="col-md-2 control-label">設備名稱</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						          	<input ngControl="deviceName" [(ngModel)]="updateUserDevice.deviceName" class="form-control" placeholder="設備名稱" type="text" disabled required>
 						        </div>
 						        
 						        <label class="col-md-2 control-label">網卡卡號</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						            <input ngControl="macAddress" [(ngModel)]="updateUserDevice.macAddress" 
 						             (ngModelChange)="setLowerCaseUpdateMacAddress($event)" class="form-control" placeholder="00:FF:95:9F:68:16" type="text" pattern="^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$" required>
 						        </div>
@@ -122,21 +122,21 @@
 
 							<div class="form-group">
 								<label class="col-md-2 control-label">設備群組</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 									<input ngControl="deviceGroup" [(ngModel)]="updateUserDevice.deviceGroup" class="form-control" placeholder="設備群組" type="text" disabled required>
 						        </div>
 						    </div>
 
 							<div class="form-group">
 								<label class="col-md-2 control-label">申請者ID</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						          	<input ngControl="applicantId" [(ngModel)]="updateUserDevice.applicantId" class="form-control" placeholder="申請者ID" type="text" required>
 						        </div>
 
 						       
 
 						        <label class="col-md-2 control-label">申請者名稱</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						          	<input ngControl="applicantName" [(ngModel)]="updateUserDevice.applicantName" class="form-control" placeholder="申請者名稱" type="text" required>
 						        </div>
 						        
@@ -144,7 +144,7 @@
 
 							<div class="form-group">
 
-						        <div class="col-md-offset-4 col-md-4">
+						        <div class="col-md-offset-4 col-md-3">
 						            <button [disabled]="!updateForm.form.valid" type="submit" class="btn btn-primary btn-block">
 										<span class="glyphicon glyphicon-pencil" aria-hidden="true">確認修改</span>
 									</button>
@@ -184,7 +184,7 @@
 								    </select>
 							</div>
 							<label class="col-md-2 control-label" for="autocomplete">關鍵字</label>
-							<div class="col-md-5">
+							<div class="col-md-4">
 								<div class="input-group">
 									<input id="searchWord" [(ngModel)]="searchWord" type="search" placeholder="Device Name or 網卡卡號" class="form-control input-md"> <span class="input-group-btn">
 										<button (click)="onClickSearch(searchWord)" id="search_btn" class="btn btn-success" type="button" >

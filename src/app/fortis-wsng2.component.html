@@ -24,6 +24,7 @@
             <li class="visible-xs-block visible-sm-block"><a [routerLink]="['/forti-user-device-manage']" >使用者設備網卡管理</a></li>
             <li class="visible-xs-block visible-sm-block"><a [routerLink]="['/forti-manage']" >系統參數設定</a></li>
             <li class="visible-xs-block visible-sm-block"><a [routerLink]="['/sys-user']" >系統使用者管理</a></li>
+            <li class="visible-xs-block visible-sm-block"><a [routerLink]="['/user-device-log']" >使用者設備管理紀錄</a></li>
 
 
           </ul>
@@ -39,7 +40,7 @@
 
 
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-2">
 
         <div class="list-group visible-md-block visible-lg-block">
           
@@ -48,18 +49,22 @@
           <a [routerLink]="['/forti-user-device-manage']" class="list-group-item">使用者設備網卡管理</a> 
           <a [routerLink]="['/forti-manage']" class="list-group-item">系統參數設定</a> 
           <a [routerLink]="['/sys-user']" class="list-group-item">系統使用者管理</a> 
+          <a [routerLink]="['/user-device-log']" class="list-group-item">使用者設備管理紀錄</a> 
           
         </div>
 
       </div>
 
-      <div class="col-md-9">
+      <div class="col-md-10">
         <router-outlet></router-outlet>
       </div>
 
     </div>
 
 </div>
+
+<!-- GO TO TOP-->
+<a id="gotop" class="go-top"></a>
 
 <!-- Ajax Waiting Modal-->
 <app-ajax-waiting>Load AjaxWaiting...</app-ajax-waiting>

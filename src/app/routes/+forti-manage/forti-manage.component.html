@@ -14,11 +14,11 @@
 
 							<div class="form-group">
 								<label class="col-md-2 control-label">Host Name</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						          	<input [(ngModel)]="sysSetting.hostname" class="form-control" placeholder="Ex: 192.168.1.254" type="text">
 						        </div>
 						        <label class="col-md-2 control-label">PORT</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						            <input [(ngModel)]="sysSetting.port" class="form-control" placeholder="Ex: 22" type="number" max="1000" min="1" step="1">
 						        </div>
 						        
@@ -26,18 +26,18 @@
 
 							<div class="form-group">
 								<label class="col-md-2 control-label">帳號</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						            <input [(ngModel)]="sysSetting.loginName" class="form-control" placeholder="帳號" type="text">
 						        </div>
 						        <label class="col-md-2 control-label">密碼</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						            <input [(ngModel)]="sysSetting.password" class="form-control" placeholder="密碼" type="password">
 						        </div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-md-2 control-label">使用者Device上限</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						            <input [(ngModel)]="sysSetting.deviceLimit" class="form-control" placeholder="Ex: 5" type="number" max="1000" min="1" step="1">
 						        </div>
 						        
@@ -51,7 +51,7 @@
 									</button>
 						        </div>
 
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						            <button [disabled]="!sysSettingValid" (click)="updateSysSetting()" type="button" class="btn btn-primary btn-block" disabled>
 										<span class="glyphicon glyphicon-pencil" aria-hidden="true">更新設定</span>
 									</button>

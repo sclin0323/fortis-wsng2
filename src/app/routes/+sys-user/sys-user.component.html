@@ -36,12 +36,12 @@
 
 							<div class="form-group">
 								<label class="col-md-2 control-label">使用者 ID</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						          	<input ngControl="sysUserId" [(ngModel)]="addSysUser.sysUserId" class="form-control" placeholder="使用者 ID" type="text" required>
 						        </div>
 						        
 						        <label class="col-md-2 control-label">名稱</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						          	<input ngControl="name" [(ngModel)]="addSysUser.name" class="form-control" placeholder="名稱" type="text" required>
 						        </div>
 						        
@@ -49,7 +49,7 @@
 
 							<div class="form-group">
 								<label class="col-md-2 control-label">角色</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 
 						          	<select [(ngModel)]="addSysUser.role" class="form-control">
 				                        <option value="ROLE_ADMIN">ROLE_ADMIN 管理員</option>  
@@ -57,7 +57,7 @@
 						        </div>
 						        
 						        <label class="col-md-2 control-label">密碼</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						          	<input ngControl="password" [(ngModel)]="addSysUser.password" class="form-control" placeholder="密碼" type="password" required>
 						        </div>
 
@@ -66,7 +66,7 @@
 
 							<div class="form-group">
 								<label class="col-md-2 control-label">再次密碼</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						          	<input ngControl="repassword" [(ngModel)]="addSysUser.repassword" class="form-control" placeholder="密碼" type="password" required>
 						        </div>
 							</div>
@@ -74,7 +74,7 @@
 							
 							<div class="form-group">
 
-						        <div class="col-md-offset-4 col-md-4">
+						        <div class="col-md-offset-4 col-md-3">
 						            <button [disabled]="!createForm.form.valid" type="submit" class="btn btn-primary btn-block">
 										<span class="glyphicon glyphicon-plus" aria-hidden="true">新增使用者</span>
 									</button>
@@ -97,12 +97,12 @@
 
 							<div class="form-group">
 									<label class="col-md-2 control-label">使用者 ID</label>
-							        <div class="col-md-4">
+							        <div class="col-md-3">
 							          	<input ngControl="sysUserId" [(ngModel)]="updateSysUser.sysUserId" class="form-control" placeholder="使用者 ID" type="text" disabled required>
 							        </div>
 							        
 							        <label class="col-md-2 control-label">名稱</label>
-							        <div class="col-md-4">
+							        <div class="col-md-3">
 							          	<input ngControl="name" [(ngModel)]="updateSysUser.name" class="form-control" placeholder="名稱" type="text" required>
 							        </div>
 							        
@@ -110,12 +110,12 @@
 
 							<div class="form-group">
 								<label class="col-md-2 control-label">角色</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						          	<input ngControl="role" [(ngModel)]="updateSysUser.role" class="form-control" placeholder="角色" type="text" disabled required>
 						        </div>
 						        
 						        <label class="col-md-2 control-label">變更密碼</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						        	<div class="input-group">
 						        	<span class="input-group-addon">
 								        <input [(ngModel)]="updateSysUser.changePassword"  type="checkbox" aria-label="變更密碼">
@@ -128,19 +128,19 @@
 
 						    <div class="form-group" *ngIf="updateSysUser.changePassword == true" >
 								<label class="col-md-2 control-label">新密碼</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						          	<input ngControl="password" [(ngModel)]="updateSysUser.newPassword" class="form-control" placeholder="新密碼" type="password" >
 						        </div>
 
 						        <label class="col-md-2 control-label">再次新密碼</label>
-						        <div class="col-md-4">
+						        <div class="col-md-3">
 						          	<input ngControl="password" [(ngModel)]="updateSysUser.renewPassword" class="form-control" placeholder="再次新密碼" type="password" >
 						        </div>
 						    </div>	
 
 							<div class="form-group">
 
-						        <div class="col-md-offset-4 col-md-4">
+						        <div class="col-md-offset-4 col-md-3">
 						            <button [disabled]="!updateForm.form.valid" type="submit" class="btn btn-primary btn-block">
 										<span class="glyphicon glyphicon-pencil" aria-hidden="true">確認修改</span>
 									</button>
@@ -182,7 +182,7 @@
 								    </select>
 							</div>
 							<label class="col-md-2 control-label" for="autocomplete">關鍵字</label>
-							<div class="col-md-5">
+							<div class="col-md-4">
 								<div class="input-group">
 									<input id="searchWord" [(ngModel)]="searchWord" type="search" placeholder="使用者ID or 名稱" class="form-control input-md"> <span class="input-group-btn">
 										<button (click)="onClickSearch(searchWord)" id="search_btn" class="btn btn-success" type="button" >

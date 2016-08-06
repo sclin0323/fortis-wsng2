@@ -86,11 +86,11 @@ export class FortiUserDeviceManageComponent implements OnInit {
 	  this._http.post(environment['urlPrefix']+"userDevice/add", JSON.stringify(this.addUserDevice), { headers: headers })
 		  .map(res => res.json())
 		  .subscribe((res: Object) =>
-			  this.addSuccess(res), this.logError
+			  this.addRes(res), this.logError
 		  );
   }
 
-  public addSuccess(response) {
+  public addRes(response) {
 	  	console.info(response);
 
 	  	// 檢查是否有檢核錯誤
@@ -134,11 +134,11 @@ export class FortiUserDeviceManageComponent implements OnInit {
 	  this._http.put(environment['urlPrefix']+"userDevice/update", JSON.stringify(this.updateUserDevice), { headers: headers })
 		  .map(res => res.json())
 		  .subscribe((res: Object) =>
-			  this.updateSuccess(res), this.logError
+			  this.updateRes(res), this.logError
 		  );
   }
 
-  public updateSuccess(response) {
+  public updateRes(response) {
 
 		// 檢查是否有檢核錯誤
 		if (response.status === 0) {
@@ -171,12 +171,12 @@ export class FortiUserDeviceManageComponent implements OnInit {
 	  this._http.delete(environment['urlPrefix']+"userDevice/delete", { search: params })
 		.map(res => res.json())
 	  	.subscribe((res: Object) =>
-			  this.deleteSuccess(res), this.logError
+			  this.deleteRes(res), this.logError
 		  );
 		  
   }
 
-  public deleteSuccess(response) {
+  public deleteRes(response) {
 
 	  console.info(response);
 
