@@ -10,12 +10,12 @@ import { environment } from '../../environment';
 declare var jQuery: any;
 @Component({
   moduleId: module.id,
-  selector: 'app-forti-manage',
-  templateUrl: 'forti-manage.component.html',
-  styleUrls: ['forti-manage.component.css'],
+  selector: 'app-sys-setting',
+  templateUrl: 'sys-setting.component.html',
+  styleUrls: ['sys-setting.component.css'],
   directives: [NgClass, NgIf, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
-export class FortiManageComponent implements OnInit {
+export class SysSettingComponent implements OnInit {
 
 	public sysSettingValid = false; 
 

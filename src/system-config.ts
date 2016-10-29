@@ -31,11 +31,13 @@ const barrels: string[] = [
   // App specific barrels.
   'app',
   'app/shared',
-  'app/routes/+forti-manage',
   'app/routes/+forti-user-device-manage',
   'app/ajax-waiting',
   'app/routes/+sys-user',
   'app/routes/+user-device-log',
+  'app/routes/+sys-setting',
+  'app/routes/+guest',
+  'app/routes/+guest-log',
   /** @cli-barrel */
 ];
 

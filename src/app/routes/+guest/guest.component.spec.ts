@@ -9,25 +9,25 @@ import {
 import { ComponentFixture, TestComponentBuilder } from '@angular/compiler/testing';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { FortiManageComponent } from './forti-manage.component';
+import { GuestComponent } from './guest.component';
 
-describe('Component: FortiManage', () => {
+describe('Component: Guest', () => {
   let builder: TestComponentBuilder;
 
-  beforeEachProviders(() => [FortiManageComponent]);
+  beforeEachProviders(() => [GuestComponent]);
   beforeEach(inject([TestComponentBuilder], function (tcb: TestComponentBuilder) {
     builder = tcb;
   }));
 
-  it('should inject the component', inject([FortiManageComponent],
-      (component: FortiManageComponent) => {
+  it('should inject the component', inject([GuestComponent],
+      (component: GuestComponent) => {
     expect(component).toBeTruthy();
   }));
 
   it('should create the component', inject([], () => {
-    return builder.createAsync(FortiManageComponentTestController)
+    return builder.createAsync(GuestComponentTestController)
       .then((fixture: ComponentFixture<any>) => {
-        let query = fixture.debugElement.query(By.directive(FortiManageComponent));
+        let query = fixture.debugElement.query(By.directive(GuestComponent));
         expect(query).toBeTruthy();
         expect(query.componentInstance).toBeTruthy();
       });
@@ -37,10 +37,10 @@ describe('Component: FortiManage', () => {
 @Component({
   selector: 'test',
   template: `
-    <app-forti-manage></app-forti-manage>
+    <app-guest></app-guest>
   `,
-  directives: [FortiManageComponent]
+  directives: [GuestComponent]
 })
-class FortiManageComponentTestController {
+class GuestComponentTestController {
 }
 

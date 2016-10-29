@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
-
-import { FortiManageComponent } from './routes/+forti-manage';
 import { FortiUserDeviceManageComponent } from './routes/+forti-user-device-manage';
 import { SysUserComponent } from './routes/+sys-user';
+import { SysSettingComponent } from './routes/+sys-setting';
 import { UserDeviceLogComponent } from './routes/+user-device-log';
+
+import { GuestComponent } from './routes/+guest';
+import { GuestLogComponent } from './routes/+guest-log';
 
 import { AjaxWaitingComponent } from './ajax-waiting/ajax-waiting.component';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgForm, NgClass, NgIf} from '@angular/common';
@@ -25,10 +27,13 @@ declare var jQuery: any;
 })
 
 @Routes([
-		{ path: '/forti-manage', component: FortiManageComponent },
 		{ path: '/forti-user-device-manage', component: FortiUserDeviceManageComponent },
+		{ path: '/user-device-log', component: UserDeviceLogComponent },
+		{ path: '/guest', component: GuestComponent },
+		{ path: '/guest-log', component: GuestLogComponent },
+
 		{ path: '/sys-user', component: SysUserComponent },
-		{ path: '/user-device-log', component: UserDeviceLogComponent }
+		{ path: '/sys-setting', component: SysSettingComponent }
 ])
 
 export class FortisWsng2AppComponent implements OnInit{
@@ -36,6 +41,9 @@ export class FortisWsng2AppComponent implements OnInit{
 	public version:string;
 	public sysUserId: string;
 	public sysUserName: string;
+
+	public enableUserDevice: boolean;
+	public enableGuest: boolean;
 
 	// Http
 	public _http: Http;
@@ -75,7 +83,7 @@ export class FortisWsng2AppComponent implements OnInit{
 			  );
 
 		// 預設 Router
-		this.router.navigate(['/forti-user-device-manage']);
+		this.router.navigate(['/sys-setting']);
 
   	}
 
@@ -83,6 +91,9 @@ export class FortisWsng2AppComponent implements OnInit{
 	  console.info(response.data);
 	  this.sysUserId = response.data.sysUserId;
 	  this.sysUserName = response.data.sysUserName;
+
+	  this.enableUserDevice = response.data.enableUserDevice;
+	  this.enableGuest = response.data.enableGuest;
   	}
 
   	logout(){

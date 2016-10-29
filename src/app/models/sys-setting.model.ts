@@ -7,4 +7,11 @@ export class SysSettingModel {
 	public password: string;
 	public deviceLimit: number;
 
+	public guestLimit: number;
+	public guestStart: string;
+	public guestEnd: string;
+
+	public enableUserDevice: boolean;
+	public enableGuest: boolean;
+
 }

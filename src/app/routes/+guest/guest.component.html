@@ -1,0 +1,194 @@
+<div class="row">
+
+	<div class="col-md-12">
+				<ol class="breadcrumb">
+				  <li>訪客系統</li>
+				  <li class="active">訪客預約系統管理</li>
+				</ol>
+
+				<ul id="crudtabs" class="nav nav-tabs">
+				  <li class="active">
+				  	<a data-toggle="tab" href="#emptytab">
+				  		<span class="glyphicon glyphicon-eye-close" aria-hidden="true">隱藏</span>
+				  	</a>
+				  </li>
+				  <li>
+				  	<a data-toggle="tab" href="#addtab">
+				  		<span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>
+				  	</a>
+				  </li>
+				</ul>
+
+				<div class="tab-content well well-sm">
+				  <div id="emptytab" class="tab-pane in active"></div>
+				  <div id="addtab" class="tab-pane">
+				    <div class="form-horizontal">
+
+						<form (ngSubmit)="onSubmitCreate(createForm)" #createForm="ngForm">
+						<fieldset>
+
+							<div class="form-group">
+						        
+						        <label class="col-md-2 control-label">Email</label>
+						        <div class="col-md-3">
+						          	<input ngControl="email" [(ngModel)]="addGuest.email" class="form-control" placeholder="Email" type="email" required>
+						        </div>
+
+						        
+
+						        <label class="col-md-2 control-label">使用結束日</label>
+						        <div class="col-md-3">
+						          	<input ngControl="startDate" [(ngModel)]="addGuest.endDate" class="form-control" placeholder="使用日期" type="date" required>
+						        </div>
+
+						        
+						        
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label">設備群組</label>
+						        <div class="col-md-3">
+						        	<select [(ngModel)]="addGuest.guestGroup" class="form-control">
+				                        <option value="guest_auth_group_1">guest_auth_group_1</option>
+				                        <option value="guest_auth_group_2">guest_auth_group_2</option>
+				                        <option value="guest_auth_group_3">guest_auth_group_3</option>
+				                        <option value="guest_auth_group_4">guest_auth_group_4</option>
+				                        <option value="guest_auth_group_5">guest_auth_group_5</option>   
+				                     </select>
+						        </div>
+
+
+							</div>
+
+
+							<div class="form-group">
+								<label class="col-md-2 control-label">申請者ID</label>
+						        <div class="col-md-3">
+						          	<input ngControl="applicantId" [(ngModel)]="addGuest.applicantId" class="form-control" placeholder="申請者ID" type="text" required>
+						        </div>
+
+						       
+
+						        <label class="col-md-2 control-label">申請者名稱</label>
+						        <div class="col-md-3">
+						          	<input ngControl="applicantName" [(ngModel)]="addGuest.applicantName" class="form-control" placeholder="申請者名稱" type="text" required>
+						        </div>
+						        
+							</div>
+
+							
+							<div class="form-group">
+
+						        <div class="col-md-offset-4 col-md-3">
+						            <button [disabled]="!createForm.form.valid" type="submit" class="btn btn-primary btn-block">
+										<span class="glyphicon glyphicon-plus" aria-hidden="true">新增預約</span>
+									</button>
+						        </div>
+
+							</div>
+
+
+
+						</fieldset>
+						</form>
+
+					</div>
+				  </div>
+
+				</div>
+		
+	</div>
+
+</div>
+
+<div class="row">
+
+	<div class="col-md-12">
+
+		<div class="form-horizontal">
+
+			<fieldset>
+
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="autocomplete">每頁筆數</label>
+							<div class="col-md-2">
+									<select id="limitSelect" [(ngModel)]="pageSize" class="form-control">
+								      <option value=30>30 筆</option>
+								      <option value=50>50 筆</option>
+								      <option value=100>100 筆</option>
+								      <option value=2000>2000 筆</option>
+								    </select>
+							</div>
+							<label class="col-md-2 control-label" for="autocomplete">關鍵字</label>
+							<div class="col-md-4">
+								<div class="input-group">
+									<input id="searchWord" [(ngModel)]="searchWord" type="search" placeholder="名稱、申請者..." class="form-control input-md"> <span class="input-group-btn">
+										<button (click)="onClickSearch(searchWord)" id="search_btn" class="btn btn-success" type="button" >
+										<span class="glyphicon glyphicon-search" aria-hidden="true"></span>資料查詢
+										</button>
+									</span>
+
+
+
+								</div>
+								
+							</div>
+
+							
+
+						</div>
+		
+			</fieldset>
+
+		</div>
+
+	</div>
+	
+	<div class="col-md-12">
+			<table class="table table-sm">
+			    <thead>
+			      <tr>
+			      	<th>編號</th>
+			      	<th>訪客帳號</th>
+			      	<th>訪客密碼</th>
+			      	<th>訪客群組</th>
+			      	<th>Email</th>
+					<th>使用結束日</th>
+			      	<th>申請者ID</th>
+			      	<th>申請者名稱</th>
+			        <th class="hidden-xs hidden-sm">建立日期</th>
+			        <th class="hidden-xs hidden-sm">建立時間</th>
+			        <th>刪除</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr *ngFor="let guest of guests; let i = index">
+			      	<th>{{i+1}}</th>
+			      	<td>{{guest.guestId}}</td>
+			      	<td>{{guest.guestPwd}}</td>
+			      	<td>{{guest.guestGroup}}</td>
+
+			      	<td>{{guest.email}}</td>
+			      	<td>{{guest.endDate}}</td>
+			        
+			        <td>{{guest.applicantId}}</td>
+			        <td>{{guest.applicantName}}</td>
+			        
+			        
+			        <td class="hidden-xs hidden-sm">{{guest.crtDate}}</td>
+			        <td class="hidden-xs hidden-sm">{{guest.crtTime}}</td>
+					<td>
+						<button (click)="onSubmitDelete(guest, i)" type="button" class="btn btn-sm btn-danger">
+							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</button>
+					</td>
+			      </tr>
+			    </tbody>
+			  	</table>
+
+			  	<div class="col-md-12 text-center">
+			      <div id="page-selection"></div>
+			    </div>
+	</div>
+
+</div>

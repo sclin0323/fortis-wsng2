@@ -1,0 +1,147 @@
+<div class="row">
+
+	<div class="col-md-12">
+		<ol class="breadcrumb">
+			<li>系統管理</li>
+			<li class="active">系統參數設定</li>
+		</ol>
+
+		<div class="form-horizontal well well-sm">
+
+						<fieldset>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label">Host Name</label>
+						        <div class="col-md-3">
+						          	<input [(ngModel)]="sysSetting.hostname" class="form-control" placeholder="Ex: 192.168.1.254" type="text">
+						        </div>
+						        <label class="col-md-2 control-label">PORT</label>
+						        <div class="col-md-3">
+						            <input [(ngModel)]="sysSetting.port" class="form-control" placeholder="Ex: 22" type="number" max="1000" min="1" step="1">
+						        </div>
+						        
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label">帳號</label>
+						        <div class="col-md-3">
+						            <input [(ngModel)]="sysSetting.loginName" class="form-control" placeholder="帳號" type="text">
+						        </div>
+						        <label class="col-md-2 control-label">密碼</label>
+						        <div class="col-md-3">
+						            <input [(ngModel)]="sysSetting.password" class="form-control" placeholder="密碼" type="password">
+						        </div>
+							</div>
+
+							<div *ngIf="sysSetting.enableUserDevice" class="form-group">
+								<label class="col-md-2 control-label">無線網路申請上限</label>
+						        <div class="col-md-3">
+						            <input [(ngModel)]="sysSetting.deviceLimit" class="form-control" placeholder="Ex: 5" type="number" max="1000" min="1" step="1">
+						        </div>
+						        
+						        
+							</div>
+
+
+							<div *ngIf="sysSetting.enableGuest" class="form-group">
+								<label class="col-md-2 control-label">訪客申請上限</label>
+						        <div class="col-md-3">
+						            <input [(ngModel)]="sysSetting.guestLimit" class="form-control" placeholder="整數" type="number" max="1000" min="1" step="1">
+						        </div>
+						        
+						        
+							</div>
+
+							
+
+							<div *ngIf="sysSetting.enableGuest" class="form-group">
+
+			
+
+						        <label class="col-md-2 control-label">訪客申請時間起</label>
+						        <div class="col-md-3">
+						        	<select [(ngModel)]="sysSetting.guestStart" class="form-control">
+				                        <option value="05:00:00">上午 5:00</option>
+				                        <option value="06:00:00">上午 6:00</option>
+				                        <option value="07:00:00">上午 7:00</option>
+				                        <option value="08:00:00">上午 8:00</option>
+				                        <option value="09:00:00">上午 9:00</option>
+				                        <option value="10:00:00">上午 10:00</option>
+				                        <option value="11:00:00">上午 11:00</option>
+				                        <option value="12:00:00">上午 12:00</option>
+				                        <option value="13:00:00">下午 13:00</option>
+				                        <option value="14:00:00">下午 14:00</option>
+				                        <option value="15:00:00">下午 15:00</option>
+				                        <option value="16:00:00">下午 16:00</option>
+				                        <option value="17:00:00">下午 17:00</option>
+				                        <option value="18:00:00">下午 18:00</option>
+				                        <option value="19:00:00">下午 19:00</option>
+				                        <option value="20:00:00">下午 20:00</option>  
+				                        <option value="21:00:00">下午 21:00</option>  
+				                        <option value="22:00:00">下午 22:00</option>  
+				                        <option value="23:00:00">下午 23:00</option>  
+				                     </select>
+						        </div>
+
+						        
+
+								<label class="col-md-2 control-label">訪客申請時間迄</label>
+						        <div class="col-md-3">
+						        	<select [(ngModel)]="sysSetting.guestEnd" class="form-control">
+				                        <option value="05:00:00">上午 5:00</option>
+				                        <option value="06:00:00">上午 6:00</option>
+				                        <option value="07:00:00">上午 7:00</option>
+				                        <option value="08:00:00">上午 8:00</option>
+				                        <option value="09:00:00">上午 9:00</option>
+				                        <option value="10:00:00">上午 10:00</option>
+				                        <option value="11:00:00">上午 11:00</option>
+				                        <option value="12:00:00">上午 12:00</option>
+				                        <option value="13:00:00">下午 13:00</option>
+				                        <option value="14:00:00">下午 14:00</option>
+				                        <option value="15:00:00">下午 15:00</option>
+				                        <option value="16:00:00">下午 16:00</option>
+				                        <option value="17:00:00">下午 17:00</option>
+				                        <option value="18:00:00">下午 18:00</option>
+				                        <option value="19:00:00">下午 19:00</option>
+				                        <option value="20:00:00">下午 20:00</option>  
+				                        <option value="21:00:00">下午 21:00</option>  
+				                        <option value="22:00:00">下午 22:00</option>  
+				                        <option value="23:00:00">下午 23:00</option>  
+				                     </select>
+						        </div>
+						        
+						        
+							</div>
+
+							<div class="form-group">
+						        <div class="col-md-offset-2 col-md-2">
+						            <button [disabled]="!sysSettingValid" (click)="getSystemStatus()" type="button" class="btn btn-success btn-block" disabled>
+										<span class="glyphicon glyphicon-link" aria-hidden="true">連線測試</span>
+									</button>
+						        </div>
+
+						        <div class="col-md-3">
+						            <button [disabled]="!sysSettingValid" (click)="updateSysSetting()" type="button" class="btn btn-primary btn-block" disabled>
+										<span class="glyphicon glyphicon-pencil" aria-hidden="true">更新設定</span>
+									</button>
+						        </div>
+
+						        <div *ngIf="!sysSettingValid" class="col-md-offset-2 col-md-2">
+						            <button [disabled]="sysSettingValid" (click)="onSubmitInitial()" type="button" class="btn btn-warning btn-block">
+									初始化設定
+									</button>
+						        </div>
+
+							</div>
+
+						</fieldset>
+
+
+
+		</div>
+
+
+
+	</div>
+
+</div>

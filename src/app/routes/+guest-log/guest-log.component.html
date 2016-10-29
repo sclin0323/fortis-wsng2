@@ -3,7 +3,7 @@
 	<div class="col-md-12">
 				<ol class="breadcrumb">
 				  <li>系統管理</li>
-				  <li class="active">使用者設備操作紀錄</li>
+				  <li class="active">訪客操作紀錄</li>
 				</ol>
 	</div>
 
@@ -32,7 +32,7 @@
 							<label class="col-md-2 control-label" for="autocomplete">關鍵字</label>
 							<div class="col-md-4">
 								<div class="input-group">
-									<input id="searchWord" [(ngModel)]="searchWord" type="search" placeholder="使用者ID or 名稱" class="form-control input-md"> <span class="input-group-btn">
+									<input id="searchWord" [(ngModel)]="searchWord" type="search" placeholder="Email or 申請者Id" class="form-control input-md"> <span class="input-group-btn">
 										<button (click)="onClickSearch(searchWord)" id="search_btn" class="btn btn-success" type="button" >
 										<span class="glyphicon glyphicon-search" aria-hidden="true"></span>資料查詢
 										</button>
@@ -64,26 +64,26 @@
 			      	<th>LOG NAME</th>
 			      	<th>LOG日期</th>
 			      	<th>LOG時間</th>
-			      	<th>設備名稱</th>
-			      	<th>設備群組</th>
-					<th>卡號</th>
+			      	<th>Email</th>
+			      	<th>訪客群組</th>
+					<th>結束日期</th>
 			        <th>申請者ID</th>
 			        <th>申請者名稱</th>
 			      </tr>
 			    </thead>
 			    <tbody>
-			      <tr *ngFor='let userDeviceLog of userDeviceLogs; let i = index'>
+			      <tr *ngFor='let guestLog of guestLogs; let i = index'>
 			      	<th>{{i+1}}</th>
-			        <td>{{userDeviceLog.method}}</td>
-			        <td>{{userDeviceLog.logUid}}</td>
-			        <td>{{userDeviceLog.logName}}</td>
-			        <td>{{userDeviceLog.logDate}}</td>
-			        <td>{{userDeviceLog.logTime}}</td>
-			        <td>{{userDeviceLog.deviceName}}</td>
-			        <td>{{userDeviceLog.deviceGroup}}</td>
-			        <td>{{userDeviceLog.macAddress}}</td>
-			        <td>{{userDeviceLog.applicantId}}</td>
-			        <td>{{userDeviceLog.applicantName}}</td>
+			        <td>{{guestLog.method}}</td>
+			        <td>{{guestLog.logUid}}</td>
+			        <td>{{guestLog.logName}}</td>
+			        <td>{{guestLog.logDate}}</td>
+			        <td>{{guestLog.logTime}}</td>
+			        <td>{{guestLog.email}}</td>
+			        <td>{{guestLog.guestGroup}}</td>
+			        <td>{{guestLog.endDate}}</td>
+			        <td>{{guestLog.applicantId}}</td>
+			        <td>{{guestLog.applicantName}}</td>
 			      </tr>
 			    </tbody>
 			  	</table>
